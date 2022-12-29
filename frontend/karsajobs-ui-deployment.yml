@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karsajobs-fe
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: karsajobs-fe
+        image: ghcr.io/takane42/karsajobs-ui:latest
+        ports:
+          - containerPort: 8000
